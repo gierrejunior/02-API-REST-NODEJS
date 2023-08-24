@@ -113,3 +113,60 @@ comando para fazer requisições simples, direto do terminal usando o httpie ex:
     http GET localhost:3333/hello
 
 
+ESlint
+
+O ESLint é uma ferramenta amplamente utilizada no desenvolvimento de JavaScript para ajudar a identificar e corrigir problemas no código-fonte. Ele funciona analisando o código-fonte para detectar padrões e práticas que possam ser problemáticos, violações de estilo, erros potenciais e outros problemas que possam afetar a qualidade, legibilidade e manutenção do código.
+
+O principal objetivo do ESLint é automatizar a revisão do código, ajudando os desenvolvedores a seguir as melhores práticas e a manter um código mais consistente e livre de erros. Ele pode ser configurado com regras personalizadas para se adequar ao estilo de codificação e aos padrões específicos de um projeto.
+
+Alguns exemplos de coisas que o ESLint pode verificar incluem:
+
+Uso adequado de variáveis e escopo.
+Espaços em branco e formatação.
+Uso de ponto e vírgula.
+Uso de declarações não utilizadas.
+Uso de recursos obsoletos.
+Convenções de nomenclatura.
+E muitos outros aspectos do código.
+Os resultados do ESLint são normalmente exibidos no terminal ou integrados diretamente em ambientes de desenvolvimento, como editores de código ou IDEs, facilitando a correção de problemas conforme o código é escrito. O uso do ESLint ajuda a melhorar a qualidade do código, a produtividade da equipe e a manutenção a longo prazo do software.
+
+
+    npm i eslint -D
+
+    npm i eslint @rocketseat/eslint-config -D
+
+npm i eslint @rocketseat/eslint-config -D essecomando serve para utilizar uma configuração padrão criada pela própria rocketseat
+depois criamos um arquivo e nomeamos como:
+
+    .eslintrc.json
+
+e colamos dentro dele o objeto abaixo
+
+    {
+    "extends" :[
+        "@rocketseat/eslint-config/node"
+    ]
+    }
+
+comoe stamos usando o node ficará /node, se fosse react, seria /react e asism por diante
+
+depois instalamos o plugin      ESLint       no VScode
+abre o settings.json no VScode e colamos o código abaixo
+
+    "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true,
+        }
+
+outros comandos eslint
+
+    npx eslint src --ext .ts
+
+vai verificar se á algum erro de padronização nos arquivos com exttensão .ts
+
+    npx eslint src --ext .ts --fix
+
+vai verificar se á algum erro de padronização nos arquivos com exttensão .ts
+e corrigilos automaticamente
+
+o npx pois fois instalado como dependencias de desenvolvimento
+
