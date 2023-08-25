@@ -1,3 +1,3 @@
-import { config } from './src/database'
+import { config } from './src_sketch_02/database'
 
 export default config

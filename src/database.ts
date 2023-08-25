@@ -1,12 +1,20 @@
+import 'dotenv/config' // ler o arquivo .env disponível, (na pasta raiz da aplicação) -> vai expor todos os valores de la em uma variavel global chamada "process.env"
 import { knex as setupKnex, Knex } from 'knex'
 
+console.log(process.env) // variavel global com os valores do arquivo .env
+console.log(process.env.DATABASE_URL)
+
+if (!process.env.DATABASE_URL) {
+  // foi criado pois o typescript estava "reclamando" que a variavel process.env.DATABASE_URL poderia não existir
+  throw new Error('DATABASE_URL  env not found')
+}
+
 export const config: Knex.Config = {
-  // com esse comando, o objeto config precisa seguir o formato de configurações do Knex
   client: 'sqlite',
   connection: {
-    filename: './db/app.db', // O path começa d eonde ta aaplicação e não de onde está o database.ts
+    filename: process.env.DATABASE_URL, // informação contida no .env
   },
-  useNullAsDefault: true, // sqlite does not support inserting default values. Set the `useNullAsDefault` flag to hide this warning. (see docs https://knexjs.org/guide/query-builder.html#insert).
+  useNullAsDefault: true,
   migrations: {
     extension: 'ts',
     directory: './db/migrations',

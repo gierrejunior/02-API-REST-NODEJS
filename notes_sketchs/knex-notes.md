@@ -93,3 +93,19 @@ assim podemos usar  o comando:
     npm run knex -- migrate:make create-documents
 
 uma das vantagens do knex é justamente, conseguir trocar de BD, sem precisar alterar o Código da aplicação
+
+
+executa a ultima migration em knex (após ter adicionado o scripts acima)
+
+    npm run knex -- migrate:latest
+    ou
+    npx node --loader tsx ./node_modules/.bin/knex migrate:latest
+
+comando apra desfazer a migration
+
+    npm run knex -- migrate:rollback
+    ou
+    npx node --loader tsx ./node_modules/.bin/knex migrate:rollback
+
+as migrations podem ser usadas para alterar ou adicionar campos em vez de tabelas inteiras
+
