@@ -1,29 +1,14 @@
 import fastify from 'fastify'
-import { knex } from './database'
-import crypto from 'node:crypto'
+import { env } from './env'
+import { transactionsRoutes } from './routes/transactions'
 
 const app = fastify()
 
-app.get('/hello', async () => {
-  const transaction = await knex('transactions')
-    .insert({
-      id: crypto.randomUUID(),
-      title: 'Transação de teste',
-      amount: 1000,
-    })
-    .returning('*')
-
-  return transaction
-})
-
-app.get('/select', async () => {
-  const transaction = await knex('transactions').select('*')
-  return transaction
-})
+app.register(transactionsRoutes) // chamando o plugin21
 
 app
   .listen({
-    port: 3333,
+    port: env.PORT,
   })
   .then(() => {
     console.log('HTTP server Running!')
